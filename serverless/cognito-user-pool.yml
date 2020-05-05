@@ -1,0 +1,45 @@
+Resources:
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      # 属性
+      ## ユーザープール名
+      UserPoolName: sls-cognito-test
+      ## ユーザ名 : ユーザーは、ユーザー名を使用するか、オプションで複数の選択肢を使用してサインアップおよびサインインできます。
+      AliasAttributes:
+        - email
+      ## 属性
+      Schema: 
+        - Name: email
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+        - Name: name
+          AttributeDataType: String
+          Mutable: false
+          Required: false
+        - Name: custom-test
+          AttributeDataType: String
+          Mutable: false
+          Required: false
+      # ポリシー
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireLowercase: true
+          RequireNumbers: true
+          RequireSymbols: true
+          RequireUppercase: true
+          TemporaryPasswordValidityDays: 1
+      # MFA
+      MfaConfiguration: "OFF"
+  CognitoUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: sls-cognito-sls-test
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH #ADMIN_USER_PASSWORD_AUTH
+        - USER_PASSWORD_AUTH
+      GenerateSecret: false
+      UserPoolId:
+        Ref: CognitoUserPool

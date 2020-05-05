@@ -1,0 +1,24 @@
+{
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  // エディタの自動整形機能は Off にしておく
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  // 拡張機能が提供している自動整形のプロパティ
+  // ファイル保存時に tslint.json のルールに則って自動整形する
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 140,
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
+  "files.eol":"\n",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "todo-tree.tree.showScanModeButton": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+}
